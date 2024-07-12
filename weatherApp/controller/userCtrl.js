@@ -65,7 +65,7 @@ const startCronJob = (userId) => {
     if (task) {
         task.stop();  
     }
-    task = cron.schedule('* * * * *', () => {  
+    task = cron.schedule('0 */3 * * *', () => {  
         sendWeatherReports(userId);
     }, {
         scheduled: true
