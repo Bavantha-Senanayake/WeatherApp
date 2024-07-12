@@ -145,23 +145,29 @@ const updateaUser = async (req, res) => {
     }
 };
 
-//fetch user data acording to userid and given date
-const getUserWeatherData=asyncHandler(async(req,res)=>{
+const getUserWeatherData = asyncHandler(async (req, res) => {
     const { id, date } = req.params;
-    try{
-        const user=await User.findById(id);
+    try {
+        const user = await User.findById(id);
         if (!user) {
             return res.status(404).send('User not found');
         }
+        
         const weatherData = user.weatherData.filter((data) => {
             const dataDate = new Date(data.date).toLocaleDateString();
-            return dataDate === date;
+            return dataDate === new Date(date).toLocaleDateString();
         });
-        res.json(user);
-    }catch(error){
-        throw new Error(error);
+
+        if (weatherData.length === 0) {
+            return res.status(404).send('No weather data found for the given date');
+        }
+
+        res.json(weatherData);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching weather data', error: error.message });
     }
 });
+
 // Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GKEY);
 const genarateText = async (prompt) => {
