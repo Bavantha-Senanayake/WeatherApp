@@ -1,3 +1,20 @@
+
+<h3>.env file</h3><br>
+
+<ul>
+  <li>PORT=your_port_number</li>
+  <li>MONGODB_URL=your_mongodb_url</li>
+  <li>JWT_SECRET=your_jwt_secret</li>
+  <li>OPENWEATHERMAP_API_KEY=your_openweathermap_api_key</li>
+  <li>OPENAI_API_KEY=your_openai_api_key</li>
+  <li>GOOGLE_API_KEY=your_google_api_key</li>
+  <li>EMAIL_USER=your_email_user</li>
+  <li>EMAIL_PASS=your_email_password</li>
+  <li>GKEY=your gemini _gkey</li>
+</ul>
+
+<br>
+
 <h2>Endpoints</h2>
 
 <ul>
